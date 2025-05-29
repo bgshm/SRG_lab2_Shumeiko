@@ -1,0 +1,35 @@
+@page
+@model SRG_lab2_Shumeiko.Pages_Departments.IndexModel
+@{
+    ViewData["Title"] = "Департаменти";
+}
+<h1>Департаменти</h1>
+<p>
+    <a asp-page="Create">Створити новий</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>DepartmentID</th>
+            <th>DepartmentName</th>
+            <th>ContactEmail</th>
+            <th>CreatedDate</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Department)
+        {
+            <tr>
+                <td>@item.DepartmentID</td>
+                <td>@item.DepartmentName</td>
+                <td>@item.ContactEmail</td>
+                <td>@item.CreatedDate.ToShortDateString()</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@item.DepartmentID">Редагувати</a> |
+                    <a asp-page="Delete" asp-route-id="@item.DepartmentID">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

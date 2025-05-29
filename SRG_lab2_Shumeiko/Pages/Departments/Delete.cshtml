@@ -1,0 +1,40 @@
+@page
+@model SRG_lab2_Shumeiko.Pages_Departments.DeleteModel
+
+@{
+    ViewData["Title"] = "Видалити департамент";
+}
+
+<h1>Видалити</h1>
+
+<h3>Ви впевнені, що хочете видалити цей департамент?</h3>
+<div>
+    <h4>Департамент</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Department.DepartmentName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Department.DepartmentName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Department.ContactEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Department.ContactEmail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Department.CreatedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Department.CreatedDate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Department.DepartmentID" />
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-page="./Index">Назад до списку</a>
+    </form>
+</div>

@@ -1,0 +1,59 @@
+@page
+@model SRG_lab2_Shumeiko.Pages_Managers.IndexModel
+
+@{
+    ViewData["Title"] = "Менеджери";
+}
+
+<h1>Менеджери</h1>
+
+<p>
+    <a asp-page="Create">Створити нового</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager[0].ManagerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager[0].EnrollmentYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager[0].Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager[0].StructuralUnit)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Manager) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManagerID)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentYear)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnrollmentYear)
+                </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ManagerID">Редагувати</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ManagerID">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

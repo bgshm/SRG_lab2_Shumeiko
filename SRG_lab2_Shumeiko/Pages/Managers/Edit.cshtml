@@ -1,0 +1,48 @@
+@page
+@model SRG_lab2_Shumeiko.Pages_Managers.EditModel
+
+@{
+    ViewData["Title"] = "Редагувати менеджера";
+}
+
+<h1>Редагувати</h1>
+
+<h4>Менеджер</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Manager.ManagerID" />
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Manager.Name" class="control-label"></label>
+                <input asp-for="Manager.Name" class="form-control" />
+                <span asp-validation-for="Manager.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Manager.EnrollmentYear" class="control-label"></label>
+                <input asp-for="Manager.EnrollmentYear" class="form-control" />
+                <span asp-validation-for="Manager.EnrollmentYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Manager.DepartmentID" class="control-label"></label>
+                <select asp-for="Manager.DepartmentID" class="form-control" asp-items="ViewBag.DepartmentID"></select>
+                <span asp-validation-for="Manager.DepartmentID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Назад до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

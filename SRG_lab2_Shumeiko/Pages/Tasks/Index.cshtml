@@ -1,0 +1,71 @@
+@page
+@model SRG_lab2_Shumeiko.Pages_Tasks.IndexModel
+
+@{
+    ViewData["Title"] = "Завдання";
+}
+
+<h1>Завдання</h1>
+
+<p>
+    <a asp-page="Create">Створити нове</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].TaskID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Manager)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Deadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Task) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manager.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deadline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TaskID">Редагувати</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.TaskID">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

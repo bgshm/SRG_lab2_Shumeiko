@@ -1,0 +1,67 @@
+@page
+@model SRG_lab2_Shumeiko.Pages_Members.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Member</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.Manager)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.Manager.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.Role)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.Role)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.TasksPerMonth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.TasksPerMonth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.TasksTotal)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.TasksTotal)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.LastTaskDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.LastTaskDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.EnrollmentYear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.EnrollmentYear)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.StructuralUnit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.StructuralUnit)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Member.MemberID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

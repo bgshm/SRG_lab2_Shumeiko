@@ -1,0 +1,142 @@
+﻿@page
+@model IndexModel
+@using SRG_lab2_Shumeiko.Models
+@{
+    ViewData["Title"] = "Запити";
+}
+
+<h2>Меню запитів</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="SelectedQuery">Оберіть запит</label>
+        <select asp-for="SelectedQuery"
+                asp-items="Html.GetEnumSelectList<QueryType>()"
+                class="form-control"
+                onchange="this.form.querySelector('[name=selectQuery]').click()">
+        </select>
+        <button type="submit"
+                name="selectQuery"
+                style="display:none">Обрати запит</button>
+    </div>
+
+
+    @if (Model.SelectedQuery == QueryType.ByDepartmentDate)
+    {
+        <div class="form-group">
+            <label asp-for="DepartmentDate">CreatedDate пізніше</label>
+            <input asp-for="DepartmentDate" type="date" class="form-control" />
+        </div>
+    }
+    @if (Model.SelectedQuery == QueryType.ByManagerEnrollmentYear)
+    {
+        <div class="form-group">
+            <label asp-for="ManagerYear">EnrollmentYear раніше</label>
+            <input asp-for="ManagerYear" type="number" class="form-control" />
+        </div>
+    }
+    @if (Model.SelectedQuery == QueryType.ByMemberTasksRange)
+    {
+        <div class="form-group">
+            <label asp-for="MinTasksPerMonth">TasksPerMonth ≥</label>
+            <input asp-for="MinTasksPerMonth" type="number" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="MaxTasksTotal">TasksTotal ≤</label>
+            <input asp-for="MaxTasksTotal" type="number" class="form-control" />
+        </div>
+    }
+    @if (Model.SelectedQuery == QueryType.ByMemberRoleAndDate)
+    {
+        <div class="form-group">
+            <label asp-for="MemberRole">Role</label>
+            <select asp-for="MemberRole" asp-items="Model.RolesList" class="form-control">
+                <option value="">-- оберіть роль --</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="MemberDate">LastTaskDate</label>
+            <input asp-for="MemberDate" type="date" class="form-control" />
+        </div>
+    }
+    @if (Model.SelectedQuery == QueryType.ByManagerTasksByStatus)
+    {
+        <div class="form-group">
+            <label asp-for="ManagerId">Manager</label>
+            <select asp-for="ManagerId"
+                    asp-items="Model.ManagersList"
+                    class="form-control">
+                <option value="">-- оберіть менеджера --</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="TaskStatus">Status</label>
+            <select asp-for="TaskStatus"
+                    asp-items="Model.StatusList"
+                    class="form-control">
+                <option value="">-- оберіть статус --</option>
+            </select>
+        </div>
+    }
+    @if (Model.SelectedQuery == QueryType.SameTasksAsMember)
+    {
+        <div class="form-group">
+            <label asp-for="QueryMemberID">Учасник</label>
+            <select asp-for="QueryMemberID" asp-items="Model.MembersList" class="form-control">
+                <option value="">-- оберіть учасника --</option>
+            </select>
+        </div>
+    }
+
+    @if (Model.SelectedQuery == QueryType.MemberPairsByStructuralUnit)
+    {
+        <div class="form-group">
+            <label asp-for="StructuralUnitParam">StructuralUnit</label>
+            <select asp-for="StructuralUnitParam"
+                    asp-items="Model.StructuralUnitsList"
+                    class="form-control">
+                <option value="">-- оберіть підрозділ --</option>
+            </select>
+        </div>
+    }
+    @if (Model.SelectedQuery == QueryType.TasksByExclusiveDepartment)
+    {
+        <div class="form-group">
+            <label asp-for="DepartmentIdParam">Департамент</label>
+            <select asp-for="DepartmentIdParam"
+                    asp-items="Model.DepartmentsList"
+                    class="form-control">
+                <option value="">-- оберіть департамент --</option>
+            </select>
+        </div>
+    }
+
+
+    <button type="submit" class="btn btn-primary mt-2">Виконати</button>
+
+</form>
+
+@if (Model.Results != null && Model.Results.Any())
+{
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                @foreach (var prop in Model.Results.First().GetType().GetProperties())
+                {
+                    <th>@prop.Name</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.Results)
+            {
+                <tr>
+                    @foreach (var prop in row.GetType().GetProperties())
+                    {
+                        <td>@prop.GetValue(row)</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

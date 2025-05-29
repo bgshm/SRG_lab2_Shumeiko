@@ -1,0 +1,70 @@
+@page
+@model SRG_lab2_Shumeiko.Pages_Members.DeleteModel
+
+@{
+    ViewData["Title"] = "Видалити учасника";
+}
+
+<h1>Видалити</h1>
+
+<h3>Ви впевнені, що хочете видалити цього учасника?</h3>
+<div>
+    <h4>Учасник</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.Manager)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.Manager.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.Role)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.Role)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.TasksPerMonth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.TasksPerMonth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.TasksTotal)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.TasksTotal)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.LastTaskDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.LastTaskDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.EnrollmentYear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.EnrollmentYear)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.StructuralUnit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Member.StructuralUnit)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Member.MemberID" />
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-page="./Index">Назад до списку</a>
+    </form>
+</div>

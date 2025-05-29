@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Лабораторна робота №2</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SRG_lab2_Shumeiko.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">Меню запитів</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" asp-page="/Departments/Index">Департаменти</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-page="/Managers/Index">Менеджери</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-page="/Members/Index">Учасники</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-page="/Tasks/Index">Завдання</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-page="/TaskExecutors/Index">Виконавці завдань</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            Лабораторна робота №2 - Шумейко Богдан К-25</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

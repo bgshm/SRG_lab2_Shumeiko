@@ -1,0 +1,37 @@
+@page
+@model SRG_lab2_Shumeiko.Pages_TaskExecutors.IndexModel
+
+@{
+    ViewData["Title"] = "Виконавці завдань";
+}
+
+<h1>Виконавці завдань</h1>
+
+<p>
+    <a asp-page="Create">Створити новий зв'язок</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskExecutor[0].Task)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskExecutor[0].Member)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TaskExecutor) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Member.Name)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
